@@ -38,16 +38,10 @@
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Menu
+                            Colors
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#" onclick="printOriginalArray()">Show Original Array</a>
-                            </li>
-                            <li><a class=" dropdown-item" href="#" onclick="printSortedUpArray()">Sort Up</a></li>
-                            <li><a class=" dropdown-item" href="#" onclick="printSortedDownArray()">Sort Down</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="showSplitedArrays()">Split Array</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="clearArray()">Clear Array</a></li>
+                        <ul id="dropdown-list" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li id="li-color-row">Empty</li>
                         </ul>
                     </div>
 
@@ -63,7 +57,7 @@
             </div>
         </header>
 
-        <div class=" container">
+        <div class="container">
             <!-- Input Form -->
             <form id="form-dark-mode" class="row g-3 needs-validationd" novalidate>
                 <div class="col-md-4">
@@ -100,12 +94,14 @@
             <div class="container">
                 <br>
                 <div id="new-color-viewer">
-                    <h5 id="new-header-dark-mode">New RGB Color (Color Name, Color Hex Value)</h5>
+                    <h5 id="new-header-dark-mode" class="new-color-header">New RGB Color (Color Name, RGB(), Hex Value)
+                    </h5>
                     <div id="new-color-box" class="color-box"></div>
                 </div>
                 <br>
                 <div id="previous-color-viewer">
-                    <h5 id="previous-header-dark-mode">Previous RGB Color (Color Name, Color Hex Value)</h5>
+                    <h5 id="previous-header-dark-mode" class="previous-color-header">Previous RGB Color (Color Name,
+                        RGB(), Hex Value)</h5>
                     <div id="previous-color-box" class="color-box"></div>
                 </div>
             </div>
