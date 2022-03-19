@@ -68,36 +68,28 @@
             <form id="form-dark-mode" class="row g-3 needs-validationd" novalidate>
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">R</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Red" required>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="0-255" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
 
                     <label for="validationCustom02" class="form-label">G</label>
-                    <input type="text" class="form-control" id="validationCustom02" placeholder="Green" required>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="0-255" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
 
                     <label for="validationCustom02" class="form-label">B</label>
-                    <input type="text" class="form-control" id="validationCustom03" placeholder="Blue" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <!-- 
-                    <label for="validationCustom02" class="form-label">ID Number</label>
-                    <input type="text" class="form-control" id="validationCustom04" placeholder="ID Number" required>
+                    <input type="text" class="form-control" id="validationCustom03" placeholder="0-255" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
 
-                    <label for="validationCustom02" class="form-label">Mobile Phone Number</label>
-                    <input type="text" class="form-control" id="validationCustom05" placeholder="Mobile Phone Number"
-                        required>
+                    <label for="validationCustom02" class="form-label">Color Name</label>
+                    <input type="text" class="form-control" id="validationCustom04" placeholder="Color Name" required>
                     <div class="valid-feedback">
                         Looks good!
-                    </div> -->
-
+                    </div>
                 </div>
                 <div class="col-12">
                     <button type="button" class="btn btn-secondary" onclick="generateRgbColor()">Submit</button>
@@ -108,12 +100,12 @@
             <div class="container">
                 <br>
                 <div id="new-color-viewer">
-                    <h5 id="new-header-dark-mode">New RGB Color</h5>
+                    <h5 id="new-header-dark-mode">New RGB Color (Color Name, Color Hex Value)</h5>
                     <div id="new-color-box" class="color-box"></div>
                 </div>
                 <br>
                 <div id="previous-color-viewer">
-                    <h5 id="previous-header-dark-mode">Previous RGB Color</h5>
+                    <h5 id="previous-header-dark-mode">Previous RGB Color (Color Name, Color Hex Value)</h5>
                     <div id="previous-color-box" class="color-box"></div>
                 </div>
             </div>

@@ -1,8 +1,9 @@
+// Class withPrivate variables
 class RgbColor {
     #redColor = 255;
     #greenColor = 255;
     #blueColor = 255;
-
+        
     set redColor(value) {
         if(isNaN(value) || value < 0 || value > 255) {  // Return true if value is not a number
             alert('Invalid Value');
@@ -39,25 +40,86 @@ class RgbColor {
         return this.#blueColor;
     }
 
-    constructor(fullColor,hexValue) {
-        this.fullColor = fullColor;
+    constructor(hexValue,colorName) {
         this.hexValue = hexValue;
+        this.colorName = colorName;
     }
 
     generateHexColor() {
-        this.hexValue = (this.#redColor).toString(16)+
-                        (this.#greenColor).toString(16)+
-                        (this.#blueColor).toString(16);
+        let redHexValue = 0;
+        let greenHexValue = 0;
+        let blueHexValue = 0;
 
-            return this.hexValue;
+        if(this.#redColor < 16) {
+            redHexValue = '0' + (this.#redColor).toString(16);
         }
+        else {
+            redHexValue = ((this.#redColor).toString(16));
+        }
+        redHexValue = redHexValue.toUpperCase();
 
-    generateFullColor() {
-        // need add converion from R,G,B values to Decimal Value
-        this.fullColor = 0;
-        return this.fullColor;
+        if(this.#greenColor < 16) {
+            greenHexValue = '0' + (this.#greenColor).toString(16);
+        }
+        else {
+            greenHexValue = (this.#greenColor).toString(16);
+        }
+        greenHexValue = greenHexValue.toUpperCase();
+
+        if(this.#blueColor < 16) {
+            blueHexValue = '0' + (this.#blueColor).toString(16);
+        }
+        else {
+            blueHexValue = (this.#blueColor).toString(16);
+        }
+        blueHexValue = blueHexValue.toUpperCase();
+
+        return '#' + redHexValue + greenHexValue + blueHexValue;
     }
 }
+
+// Class with regular variables
+// class RgbColor {
+//     constructor(redColor,greenColor,blueColor,hexValue,colorName) {
+//         this.redColor = redColor;
+//         this.greenColor = greenColor;
+//         this.blueColor = blueColor;
+//         this.hexValue = hexValue;
+//         this.colorName = colorName;
+//     }
+
+//     generateHexColor() {
+//         let redHexValue = 0;
+//         let greenHexValue = 0;
+//         let blueHexValue = 0;
+
+//         if(this.redColor < 16) {
+//             redHexValue = '0' + (this.redColor).toString(16);
+//         }
+//         else {
+//             redHexValue = ((this.redColor).toString(16));
+//         }
+//         redHexValue = redHexValue.toUpperCase();
+
+//         if(this.greenColor < 16) {
+//             greenHexValue = '0' + (this.greenColor).toString(16);
+//         }
+//         else {
+//             greenHexValue = (this.greenColor).toString(16);
+//         }
+//         greenHexValue = greenHexValue.toUpperCase();
+
+//         if(this.blueColor < 16) {
+//             blueHexValue = '0' + (this.blueColor).toString(16);
+//         }
+//         else {
+//             blueHexValue = (this.blueColor).toString(16);
+//         }
+//         blueHexValue = blueHexValue.toUpperCase();
+
+//         return '#' + redHexValue + greenHexValue + blueHexValue;
+//     }
+// }
 
 newRgbColor = new RgbColor();
 
@@ -65,34 +127,42 @@ function generateRgbColor() {
     displayPreviousRgbColor();
     
     // Get new RGB Color from input
-    newRgbColor.redColor = +document.getElementById('validationCustom01').value; 
-    newRgbColor.greenColor = +document.getElementById('validationCustom02').value; 
-    newRgbColor.blueColor = +document.getElementById('validationCustom03').value; 
+    newRgbColor.redColor = +document.getElementById('validationCustom01').value;
+    newRgbColor.greenColor = +document.getElementById('validationCustom02').value;
+    newRgbColor.blueColor = +document.getElementById('validationCustom03').value;
     newRgbColor.hexValue = newRgbColor.generateHexColor();
-    newRgbColor.fullColor = newRgbColor.generateFullColor();
-
-    console.log('Red: '+newRgbColor.redColor);
-    console.log('Green: '+newRgbColor.greenColor);
-    console.log('Blue: '+newRgbColor.blueColor);
-    console.log('Hex: #'+newRgbColor.hexValue);
-    console.log('Full Color: '+newRgbColor.fullColor);
+    newRgbColor.colorName = document.getElementById('validationCustom04').value;
 
     displayNewRgbColor();
 }
 
 function displayPreviousRgbColor() {
     const previousColorViwerElement = document.getElementById('previous-color-viewer');
+    document.getElementsByTagName('h5')[1].remove();
     document.getElementById('previous-color-box').remove();
 
     // Add new color viwer elements
+    if(newRgbColor.colorName == undefined) {
+        newRgbColor.colorName = '';
+    }
+
+    if(newRgbColor.hexValue == undefined) {
+        newRgbColor.hexValue = '#'
+    }
+
+    previousColorViwerElement.innerHTML += `<h5 id="new-header-dark-mode">Previous RGB Color (Color Name: ${newRgbColor.colorName}, Hex: ${newRgbColor.hexValue})</h5>`;
+
     previousColorViwerElement.innerHTML += `<div id="previous-color-box" class="color-box" style="background-color: rgb(${newRgbColor.redColor}, ${newRgbColor.greenColor}, ${newRgbColor.blueColor});"></div>`
 }
 
 function displayNewRgbColor() {
     const newColorViwerElement = document.getElementById('new-color-viewer');
+    document.getElementsByTagName('h5')[0].remove();
     document.getElementById('new-color-box').remove();
 
     // Add new color viwer elements
+    newColorViwerElement.innerHTML += `<h5 id="new-header-dark-mode">New RGB Color (Color Name: ${newRgbColor.colorName}, Hex: ${newRgbColor.hexValue})</h5>`;
+
     newColorViwerElement.innerHTML += `<div id="new-color-box" class="color-box" style="background-color: rgb(${newRgbColor.redColor}, ${newRgbColor.greenColor}, ${newRgbColor.blueColor});"></div>`
 }
 
